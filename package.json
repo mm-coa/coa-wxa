@@ -1,0 +1,22 @@
+{
+  "name": "site-wxa-core",
+  "version": "1.0.3",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc-watch",
+    "build": "rm -rf dist* && tsc"
+  },
+  "dependencies": {
+    "miniprogram-api-typings": "^2.10.3-1",
+    "tslib": "^1.11.1"
+  },
+  "devDependencies": {
+    "tsc-watch": "^4.2.3",
+    "typescript": "^3.8.3"
+  }
+}
