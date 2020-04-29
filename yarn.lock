@@ -57,10 +57,10 @@ map-stream@~0.1.0:
   resolved "https://registry.npmjs.org/map-stream/-/map-stream-0.1.0.tgz#e56aa94c4c8055a16404a0674b78f215f7c8e194"
   integrity sha1-5WqpTEyAVaFkBKBnS3jyFffI4ZQ=
 
-miniprogram-api-typings@^2.10.3-1:
-  version "2.10.3-1"
-  resolved "https://registry.npmjs.org/miniprogram-api-typings/-/miniprogram-api-typings-2.10.3-1.tgz#520d074c96b6aca6e15f75b6a4f22058af59b3be"
-  integrity sha512-s5xJzJQMeK2WibXJX/tOG5RqthBE6qXCN1gW/Bk7UQkLzE18+Iws/Lpd9TkH73DEQ/fhLXdJrIJjtTuFDlhT8w==
+miniprogram-api-typings@^2.10.4:
+  version "2.10.4"
+  resolved "https://registry.npmjs.org/miniprogram-api-typings/-/miniprogram-api-typings-2.10.4.tgz#13165d1e77084c3ec79ec93d8c74974f77425eb0"
+  integrity sha512-IXWi6sJFd/EH1wNR8rtOx2+hJOwZk7jKFVIshQ0aAlRaKk0P4Jack4SItzUwNURgRykvrleGgErI/jH5hsiniw==
 
 node-cleanup@^2.1.2:
   version "2.1.2"
