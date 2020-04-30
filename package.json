@@ -1,12 +1,7 @@
 {
   "name": "site-wxa-core",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "dev": "tsc-watch",
     "build": "rm -rf dist* && tsc"
