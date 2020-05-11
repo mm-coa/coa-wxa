@@ -1,8 +1,8 @@
-import { DataSet, Dic } from '../typing'
+import { Dic } from '../typing'
 
 export default new class {
 
-  async init (page: any, id: string, data: DataSet, resume = true) {
+  async init (page: any, id: string, data: any, resume = true) {
 
     const component = page.selectComponent(`#${id}`)
 
