@@ -1,4 +1,4 @@
-import { opt } from '../index'
+import config from '../config'
 
 export default new class {
   go (path: string, isRedirect = false) {
@@ -15,7 +15,7 @@ export default new class {
       const realPath = path.substr(colonIndex + 1)
 
       // 本小程序页面
-      if (appId === opt.selfAppId)
+      if (appId === config.selfAppId)
         return this.goInner(realPath, isRedirect)
 
       //打开其它小程序

@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "miniprogram-api-typings": "^2.10.4",
-    "tslib": "^1.11.1"
+    "tslib": "^1.11.2"
   },
   "devDependencies": {
     "tsc-watch": "^4.2.3",

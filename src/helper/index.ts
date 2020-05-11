@@ -1,12 +1,7 @@
 const INFINITY = 1 / 0
-const oneMinute = 60 * 1000
-const oneHour = 60 * oneMinute
-const oneDay = 24 * oneHour
-const oneYear = 365 * oneDay
 
 export default new class {
 
-  forever: number = 100 * 100 * oneYear
 
   async timeout (ms = 0) {
     return await new Promise(resolve => {
