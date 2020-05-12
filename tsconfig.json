@@ -14,11 +14,13 @@
       "es2020",
       "esnext"
     ],
-    "sourceMap": true,
-    "incremental": true,
+    "sourceMap": false,
+    "declaration": true,
     "importHelpers": true,
     "removeComments": true,
-    "declaration": true
+    "types": [
+      "miniprogram-api-typings"
+    ]
   },
   "include": [
     "src"

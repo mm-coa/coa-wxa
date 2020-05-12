@@ -1,5 +1,3 @@
-import 'miniprogram-api-typings'
-
 type Basic = string | number | boolean;
 
 export interface Dic<T> {
