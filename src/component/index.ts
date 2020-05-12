@@ -2,7 +2,7 @@ import { Dic } from '../typing'
 
 export default new class {
 
-  async init (page: any, id: string, data: any, resume = true) {
+  async init (page: WechatMiniprogram.Page.TrivialInstance, id: string, data: Dic<any> = {}, resume = true) {
 
     const component = page.selectComponent(`#${id}`)
 
@@ -10,8 +10,6 @@ export default new class {
       console.warn(`please provide correct id: ${id}`)
       return
     }
-
-    data = data || {}
 
     return await new Promise(resolve => {
 

@@ -16,17 +16,17 @@ const error = (message: string): never => {
   throw new Error('DieError: ' + message)
 }
 
-const async = (func: (...args: any[]) => any, args?: any, self?: WechatMiniprogram.Component.TrivialInstance | WechatMiniprogram.Page.TrivialInstance) => new Promise(resolve => func({
+const async = <T = any> (func: (...args: any[]) => any, args?: any, self?: WechatMiniprogram.Component.TrivialInstance | WechatMiniprogram.Page.TrivialInstance) => new Promise(resolve => func({
   ...args, success: resolve, fail: () => resolve(undefined),
-}, self))
+}, self)) as Promise<T>
 
 const async_void = (func: (...args: any[]) => any, args?: any) => new Promise(resolve => func({
   ...args, success: () => resolve(true), fail: () => resolve(false),
-}))
+})) as Promise<boolean>
 
-const sync = (func: (...args: any[]) => any, ...args: any[]) => {
+const sync = <T = any> (func: (...args: any[]) => any, ...args: any[]) => {
   try {
-    return func(...args)
+    return func(...args) as T
   } catch (e) {
     return undefined
   }
@@ -36,36 +36,36 @@ export default new class {
 
   showToast (title: string, option?: WechatMiniprogram.ShowToastOption) {
     const opt = { mask: true, icon: 'none' } as WechatMiniprogram.ShowToastOption
-    w.showToast({ title, ...opt, ...option })
+    return w.showToast({ title, ...opt, ...option })
   }
 
   showModal (object: WechatMiniprogram.ShowModalOption) {
-    w.showModal(object)
+    return w.showModal(object)
   }
 
   showLoading (title = '正在加载中...', option = {}) {
     const opt = { mask: true }
-    w.showLoading({ title, ...opt, ...option })
+    return w.showLoading({ title, ...opt, ...option })
   }
 
-  showTabBar (object: WechatMiniprogram.ShowTabBarOption) {
-    w.showTabBar(object)
+  showTabBar (object: WechatMiniprogram.ShowTabBarOption = {}) {
+    return w.showTabBar(object)
   }
 
-  hideTabBar (object: WechatMiniprogram.HideTabBarOption) {
-    w.hideTabBar(object)
+  hideTabBar (object: WechatMiniprogram.HideTabBarOption = {}) {
+    return w.hideTabBar(object)
   }
 
   hideLoading () {
-    w.hideLoading()
+    return w.hideLoading()
   }
 
-  hideKeyboard (object?: WechatMiniprogram.HideKeyboardOption) {
-    w.hideKeyboard(object)
+  hideKeyboard (object: WechatMiniprogram.HideKeyboardOption = {}) {
+    return w.hideKeyboard(object)
   }
 
   pageScrollTo (object: WechatMiniprogram.PageScrollToOption) {
-    w.pageScrollTo(object)
+    return w.pageScrollTo(object)
   }
 
   canIUse (methodName: string) {
@@ -81,47 +81,47 @@ export default new class {
   }
 
   setNavigationBarTitle (title: string, object?: WechatMiniprogram.SetNavigationBarTitleOption) {
-    w.setNavigationBarTitle({ title, ...object })
+    return w.setNavigationBarTitle({ title, ...object })
   }
 
   setNavigationBarColor (object: WechatMiniprogram.SetNavigationBarColorOption) {
-    w.setNavigationBarColor(object)
+    return w.setNavigationBarColor(object)
   }
 
   setBackgroundColor (object: WechatMiniprogram.SetBackgroundColorOption) {
-    w.setBackgroundColor(object)
+    return w.setBackgroundColor(object)
   }
 
   saveImageToPhotosAlbum (args: WechatMiniprogram.SaveImageToPhotosAlbumOption) {
-    w.saveImageToPhotosAlbum(args)
+    return w.saveImageToPhotosAlbum(args)
   }
 
   navigateToMiniProgram (appId: string, object?: WechatMiniprogram.NavigateToMiniProgramOption) {
-    w.navigateToMiniProgram({ appId, ...object })
+    return w.navigateToMiniProgram({ appId, ...object })
   }
 
   switchTab (object: WechatMiniprogram.SwitchTabOption) {
-    w.switchTab(object)
+    return w.switchTab(object)
   }
 
   redirectTo (object: WechatMiniprogram.RedirectToOption) {
-    w.redirectTo(object)
+    return w.redirectTo(object)
   }
 
   navigateTo (object: WechatMiniprogram.NavigateToOption) {
-    w.navigateTo(object)
+    return w.navigateTo(object)
   }
 
   navigateBack (object: WechatMiniprogram.NavigateBackOption) {
-    w.navigateBack(object)
+    return w.navigateBack(object)
   }
 
   navigateBackMiniProgram (object: WechatMiniprogram.NavigateBackMiniProgramOption) {
-    w.navigateBackMiniProgram(object)
+    return w.navigateBackMiniProgram(object)
   }
 
   reLaunch (object: WechatMiniprogram.ReLaunchOption) {
-    w.reLaunch(object)
+    return w.reLaunch(object)
   }
 
   createSelectorQuery () {
@@ -129,19 +129,19 @@ export default new class {
   }
 
   setClipboardData (object: WechatMiniprogram.SetClipboardDataOption) {
-    w.setClipboardData(object)
+    return w.setClipboardData(object)
   }
 
   createAnimation (object: any) {
-    w.createAnimation(object)
+    return w.createAnimation(object)
   }
 
   previewImage (object: WechatMiniprogram.PreviewImageOption) {
-    w.previewImage(object)
+    return w.previewImage(object)
   }
 
   makePhoneCall (object: WechatMiniprogram.MakePhoneCallOption) {
-    w.makePhoneCall(object)
+    return w.makePhoneCall(object)
   }
 
   getApp () {
@@ -165,7 +165,6 @@ export default new class {
   }
 
   getEnterOptionsSync () {
-    // @ts-ignore
     return sync(w.getEnterOptionsSync)
   }
 
@@ -210,7 +209,7 @@ export default new class {
   }
 
   setStorageSync (...args: any[]) {
-    return sync(w.setStorageSync, ...args)
+    return sync<void>(w.setStorageSync, ...args)
   }
 
   getStorageSync (...args: any[]) {
@@ -218,40 +217,40 @@ export default new class {
   }
 
   removeStorageSync (...args: any[]) {
-    return sync(w.removeStorageSync, ...args)
+    return sync<void>(w.removeStorageSync, ...args)
   }
 
   clearStorageSync () {
-    return sync(w.clearStorageSync)
+    return sync<void>(w.clearStorageSync)
   }
 
   async request (arg: WechatMiniprogram.RequestOption) {
-    return await async(w.request, arg) as any
+    return await async<WechatMiniprogram.RequestSuccessCallbackResult>(w.request, arg)
   }
 
   async login (arg?: WechatMiniprogram.LoginOption) {
-    return await async(w.login, arg)
+    return await async<WechatMiniprogram.LoginSuccessCallbackResult>(w.login, arg)
   }
 
-  async wxCheckSession () {
-    return await async(w.checkSession)
+  async wxCheckSession (option?: WechatMiniprogram.CheckSessionOption) {
+    return await async<WechatMiniprogram.GeneralCallbackResult>(w.checkSession)
   }
 
   async checkLoginCode (arg?: WechatMiniprogram.LoginOption) {
-    const res = await this.login(arg) as { code: '' }
+    const res = await this.login(arg)
     return res.code || error('微信登陆失败，无法获取code')
   }
 
   async getImageInfo (args: WechatMiniprogram.GetImageInfoOption) {
-    return await async(w.getImageInfo, args) as any
+    return await async(w.getImageInfo, args)
   }
 
   async chooseImage (args: WechatMiniprogram.ChooseImageOption) {
-    return await async(w.chooseImage, args) as any
+    return await async(w.chooseImage, args)
   }
 
   async uploadFile (args: WechatMiniprogram.UploadFileOption) {
-    return await async(w.uploadFile, args)
+    return await async<WechatMiniprogram.UploadFileSuccessCallbackResult>(w.uploadFile, args)
   }
 
   async downloadFile (args: WechatMiniprogram.DownloadFileOption) {
@@ -296,7 +295,7 @@ export default new class {
     return await async(w.getLocation, object)
   }
 
-  async scanCode (object: WechatMiniprogram.ScanCodeOption) {
+  async scanCode (object: WechatMiniprogram.ScanCodeOption = {}) {
     return await async(w.scanCode, object)
   }
 
