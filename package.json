@@ -1,6 +1,6 @@
 {
   "name": "site-wxa-core",
-  "version": "1.0.11",
+  "version": "1.0.17",
   "license": "MIT",
   "scripts": {
     "dev": "tsc-watch",

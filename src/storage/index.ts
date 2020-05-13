@@ -1,11 +1,14 @@
 import config from '../config'
 import { Dic } from '../typing'
 
-
 // 内存
 let $MEMORY = {} as Dic<string>
 
-const id2key = (id: string) => config.env + '_' + id.toLowerCase()
+const snakeCase = (str: string) => (str.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g) || [])
+  .map(x => x.toLowerCase())
+  .join('_')
+
+const id2key = (id: string) => config.env + '_' + snakeCase(id)
 
 export default new class {
 
@@ -15,7 +18,7 @@ export default new class {
       wx.setStorageSync(id2key(id), [Date.now() + ms, value])
     }
 
-    get<T> (id: string) {
+    get<T = any> (id: string) {
 
       const result = wx.getStorageSync(id2key(id)) || [0, undefined]
 
@@ -48,7 +51,7 @@ export default new class {
       return value
     }
 
-    get<T> (id: string) {
+    get<T = any> (id: string) {
       try {
         const data = JSON.parse($MEMORY[id2key(id)] || '[0]')
         const expire = parseInt(data[0]) || 0
@@ -74,4 +77,5 @@ export default new class {
       console.log('$SESSION', $MEMORY)
     }
   }
+
 }

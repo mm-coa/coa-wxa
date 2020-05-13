@@ -1,4 +1,4 @@
-import { DataSet } from '../typing'
+import { DataSet, Dic } from '../typing'
 
 const w = wx
 
@@ -257,7 +257,7 @@ export default new class {
     return await async(w.downloadFile, args)
   }
 
-  async getImageInfos (images: WechatMiniprogram.GetImageInfoOption) {
+  async getImageInfos (images: Dic<any>[]) {
 
     const imageArr = clone(images)
 
@@ -271,7 +271,7 @@ export default new class {
     return imageArr.filter(v => v.url)
   }
 
-  async chooseAddress (args: WechatMiniprogram.ChooseAddressOption) {
+  async chooseAddress (args: WechatMiniprogram.ChooseAddressOption = {}) {
     return await async(w.chooseAddress, args)
   }
 

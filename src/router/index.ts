@@ -1,4 +1,5 @@
 import config from '../config'
+import { Dic } from '../typing'
 
 export default new class {
   go (path: string, isRedirect = false) {
@@ -69,6 +70,14 @@ export default new class {
     const pages = getCurrentPages()
     pages.pop()
     return pages.pop()
+  }
+
+  getCurrentPage () {
+    return getCurrentPages().pop() || {} as Dic<any>
+  }
+
+  getCurrentPath () {
+    return this.getCurrentPage().route || ''
   }
 
   private goInner (path: string, isRedirect = false) {

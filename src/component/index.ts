@@ -2,13 +2,13 @@ import { Dic } from '../typing'
 
 export default new class {
 
-  async init (page: WechatMiniprogram.Page.TrivialInstance, id: string, data: Dic<any> = {}, resume = true) {
+  async init (page: any, id: string, data: Dic<any> = {}, resume = true) {
 
-    const component = page.selectComponent(`#${id}`)
+    const component = page.selectComponent ? page.selectComponent(`#${id}`) : ''
 
     if (!component) {
       console.warn(`please provide correct id: ${id}`)
-      return
+      return undefined
     }
 
     return await new Promise(resolve => {
@@ -25,7 +25,7 @@ export default new class {
 
   }
 
-  get (page: WechatMiniprogram.Page.TrivialInstance, id: string) {
-    return page.selectComponent(`#${id}`)
+  get (page: any, id: string) {
+    return page.selectComponent ? page.selectComponent(`#${id}`) : undefined
   }
 }
