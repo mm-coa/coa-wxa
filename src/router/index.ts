@@ -42,7 +42,7 @@ export default new class {
     wx.navigateBack(opts)
   }
 
-  reopen (path: string, args: WechatMiniprogram.ReLaunchOption) {
+  reopen (path: string, args: Dic<string> = {}) {
     wx.reLaunch({ url: path, ...args, fail: () => console.warn('try to reopen page fail') })
   }
 
