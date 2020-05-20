@@ -36,7 +36,7 @@ export default new class {
 
   showToast (title: string, option?: WechatMiniprogram.ShowToastOption) {
     const opt = { mask: true, icon: 'none' } as WechatMiniprogram.ShowToastOption
-    return w.showToast({ title, ...opt, ...option })
+    return w.showToast({ ...opt, ...option, title })
   }
 
   showModal (object: WechatMiniprogram.ShowModalOption) {
