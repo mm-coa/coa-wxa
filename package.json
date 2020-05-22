@@ -1,9 +1,9 @@
 {
   "name": "site-wxa-core",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc-watch",
+    "dev": "tsc -w",
     "build": "rm -rf dist* && tsc && cp package.json dist",
     "npm-publish": "yarn build && yarn version --patch && cp package.json dist && cd dist && npm publish"
   },
@@ -11,8 +11,7 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "miniprogram-api-typings": "^2.10.4",
-    "tsc-watch": "^4.2.5",
-    "typescript": "^3.9.2"
+    "miniprogram-api-typings": "^2.11.0",
+    "typescript": "^3.9.3"
   }
 }
