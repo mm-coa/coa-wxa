@@ -1,6 +1,6 @@
 {
   "name": "site-wxa-core",
-  "version": "1.0.25",
+  "version": "1.0.31",
   "license": "MIT",
   "scripts": {
     "dev": "tsc -w",

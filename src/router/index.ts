@@ -2,6 +2,7 @@ import config from '../config'
 import { Dic } from '../typing'
 
 export default new class {
+
   go (path: string, isRedirect = false) {
     if (!path || !path.trim())
       return
@@ -48,7 +49,10 @@ export default new class {
 
   getPreviousFullPath () {
 
-    const page = getCurrentPages().pop() || { route: '', options: {} }
+    const pages = getCurrentPages()
+    pages.pop()
+
+    const page = pages.pop() || { route: '', options: {} }
     const route = page.route || ''
     const options = page.options || {}
 
@@ -78,6 +82,24 @@ export default new class {
 
   getCurrentPath () {
     return this.getCurrentPage().route || ''
+  }
+
+  getCurrentFullPath () {
+
+    const page = getCurrentPages().pop() || { route: '', options: {} }
+    const route = page.route || ''
+    const options = page.options || {}
+
+    let querySting = '?'
+
+    for (const key in options) {
+      if (options.hasOwnProperty(key)) {
+        querySting += `${key}=${options[key]}&`
+      }
+    }
+
+    return '/' + (route + querySting).replace(/\?$/g, '').replace(/&$/g, '')
+
   }
 
   private goInner (path: string, isRedirect = false) {
