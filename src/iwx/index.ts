@@ -2,8 +2,8 @@ import { DataSet, Dic } from '../typing'
 
 const w = wx
 
-const clone = (source: any) => {
-  return JSON.parse(JSON.stringify(source))
+const clone = <T = any> (source: any) => {
+  return JSON.parse(JSON.stringify(source)) as T
 }
 
 const showModel = (content: string) => {
@@ -259,10 +259,7 @@ export default new class {
 
   async getImageInfos (images: Dic<any>[]) {
 
-    const imageArr = clone(images)
-
-    if (!imageArr || !Array.isArray(imageArr))
-      return
+    const imageArr = clone<Dic<any>[]>(images)
 
     const tempFiles = await Promise.all(imageArr.map(v => this.getImageInfo({ src: v.url })))
 
