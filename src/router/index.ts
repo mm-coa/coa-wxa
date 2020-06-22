@@ -37,9 +37,9 @@ export default new class {
     console.warn('please provide correct path')
   }
 
-  back (delta = 1, mini = false, options = {}) {
+  back (delta = 1, options = {}) {
 
-    const opts = { delta, ...options, fail: () => mini && iwx.navigateBackMiniProgram() }
+    const opts = { delta, ...options, fail: () => delta === -1 && iwx.navigateBackMiniProgram() }
 
     wx.navigateBack(opts)
 
