@@ -1,5 +1,6 @@
 import config from '../config'
 import { Dic } from '../typing'
+import { iwx } from '../index'
 
 export default new class {
 
@@ -36,11 +37,12 @@ export default new class {
     console.warn('please provide correct path')
   }
 
-  back (delta = 1, options = {}) {
+  back (delta = 1, mini = false, options = {}) {
 
-    const opts = { delta, ...options }
+    const opts = { delta, ...options, fail: () => mini && iwx.navigateBackMiniProgram() }
 
     wx.navigateBack(opts)
+
   }
 
   reopen (path: string, args: Dic<string> = {}) {

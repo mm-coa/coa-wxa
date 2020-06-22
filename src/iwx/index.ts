@@ -112,11 +112,11 @@ export default new class {
     return w.navigateTo(object)
   }
 
-  navigateBack (object: WechatMiniprogram.NavigateBackOption) {
+  navigateBack (object = { delta: 1 }) {
     return w.navigateBack(object)
   }
 
-  navigateBackMiniProgram (object: WechatMiniprogram.NavigateBackMiniProgramOption) {
+  navigateBackMiniProgram (object = {}) {
     return w.navigateBackMiniProgram(object)
   }
 
