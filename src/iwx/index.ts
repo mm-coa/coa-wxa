@@ -34,7 +34,7 @@ const sync = <T = any> (func: (...args: any[]) => any, ...args: any[]) => {
 
 export default new class {
 
-  showToast (title: string, option?: WechatMiniprogram.ShowToastOption) {
+  showToast (title: string, option?: Dic<any>) {
     const opt = { mask: true, icon: 'none' } as WechatMiniprogram.ShowToastOption
     return w.showToast({ ...opt, ...option, title })
   }
@@ -80,7 +80,7 @@ export default new class {
     return w.getMenuButtonBoundingClientRect()
   }
 
-  setNavigationBarTitle (title: string, object?: WechatMiniprogram.SetNavigationBarTitleOption) {
+  setNavigationBarTitle (title: string, object?: Dic<any>) {
     return w.setNavigationBarTitle({ title, ...object })
   }
 
@@ -96,7 +96,7 @@ export default new class {
     return w.saveImageToPhotosAlbum(args)
   }
 
-  navigateToMiniProgram (appId: string, object?: WechatMiniprogram.NavigateToMiniProgramOption) {
+  navigateToMiniProgram (appId: string, object?: Dic<any>) {
     return w.navigateToMiniProgram({ appId, ...object })
   }
 
@@ -232,7 +232,7 @@ export default new class {
     return await async<WechatMiniprogram.LoginSuccessCallbackResult>(w.login, arg)
   }
 
-  async wxCheckSession (option?: WechatMiniprogram.CheckSessionOption) {
+  async wxCheckSession () {
     return await async<WechatMiniprogram.GeneralCallbackResult>(w.checkSession)
   }
 
