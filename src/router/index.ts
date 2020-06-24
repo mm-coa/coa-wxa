@@ -21,7 +21,10 @@ export default new class {
       if (appId === config.selfAppId)
         return this.goInner(realPath, isRedirect)
 
-      const envVersion = config.envType === 't' ? 'trial' : 'release' as any
+      const accountInfo = iwx.getAccountInfoSync() || {} as any
+      const miniProgram = accountInfo.miniProgram || {}
+      const envVersion = miniProgram.envVersion || (config.envType === 't' ? 'trial' : 'release' as any)
+
       //打开其它小程序
       return wx.navigateToMiniProgram({ appId, envVersion, path: realPath && realPath.startsWith('/') ? realPath.substr(1) : realPath })
     }

@@ -161,7 +161,7 @@ export default new class {
   }
 
   getAccountInfoSync () {
-    return sync(w.getAccountInfoSync)
+    return sync<WechatMiniprogram.AccountInfo>(w.getAccountInfoSync)
   }
 
   getEnterOptionsSync () {
