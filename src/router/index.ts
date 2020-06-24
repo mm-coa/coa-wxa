@@ -21,8 +21,9 @@ export default new class {
       if (appId === config.selfAppId)
         return this.goInner(realPath, isRedirect)
 
+      const envVersion = config.envType === 't' ? 'trial' : 'release' as any
       //打开其它小程序
-      return wx.navigateToMiniProgram({ appId, path: realPath && realPath.startsWith('/') ? realPath.substr(1) : realPath })
+      return wx.navigateToMiniProgram({ appId, envVersion, path: realPath && realPath.startsWith('/') ? realPath.substr(1) : realPath })
     }
 
     //以'/'或者'./'开头则为内部链接
@@ -39,7 +40,7 @@ export default new class {
 
   back (delta = 1, options = {}) {
 
-    const opts = { delta, ...options, fail: () => delta === -1 && iwx.navigateBackMiniProgram() }
+    const opts = { delta, ...options, fail: () => delta === -1 && iwx.navigateBackMiniProgram(options) }
 
     wx.navigateBack(opts)
 

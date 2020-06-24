@@ -172,6 +172,10 @@ export default new class {
     return sync(w.getLaunchOptionsSync)
   }
 
+  getStorageInfoSync () {
+    return sync(w.getStorageInfoSync)
+  }
+
   async canvasToTempFilePath (object: WechatMiniprogram.CanvasToTempFilePathOption, self: WechatMiniprogram.Component.TrivialInstance | WechatMiniprogram.Page.TrivialInstance) {
     return await async(w.canvasToTempFilePath, object, self)
   }
