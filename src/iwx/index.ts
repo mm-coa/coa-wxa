@@ -176,6 +176,14 @@ export default new class {
     return sync(w.getStorageInfoSync)
   }
 
+  setTabBarStyle (options: WechatMiniprogram.SetTabBarStyleOption) {
+    return w.setTabBarStyle(options)
+  }
+
+  setTabBarItem (options: WechatMiniprogram.SetTabBarItemOption) {
+    return w.setTabBarItem(options)
+  }
+
   async canvasToTempFilePath (object: WechatMiniprogram.CanvasToTempFilePathOption, self: WechatMiniprogram.Component.TrivialInstance | WechatMiniprogram.Page.TrivialInstance) {
     return await async(w.canvasToTempFilePath, object, self)
   }
