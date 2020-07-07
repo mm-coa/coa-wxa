@@ -7,9 +7,7 @@
     "build": "rm -rf dist* && tsc && cp package.json dist",
     "npm-publish": "yarn build && yarn version --patch && cp package.json dist && cd dist && npm publish"
   },
-  "dependencies": {
-    "tslib": "^2.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "miniprogram-api-typings": "^2.11.0",
     "typescript": "^3.9.6"

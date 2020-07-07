@@ -15,7 +15,6 @@
       "esnext"
     ],
     "declaration": true,
-    "importHelpers": true,
     "removeComments": true,
     "types": [
       "miniprogram-api-typings"
