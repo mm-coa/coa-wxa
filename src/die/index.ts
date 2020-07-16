@@ -3,7 +3,7 @@ function showModel (content: string) {
 }
 
 function showModelOnce (content: string) {
-  wx.showModal({ title: '错误', content, showCancel: false })
+  wx.showModal({ title: '提示', content, showCancel: false })
 }
 
 export default new class {
