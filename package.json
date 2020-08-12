@@ -1,5 +1,5 @@
 {
-  "name": "site-wxa-core",
+  "name": "coa-wxa",
   "version": "1.0.43",
   "license": "MIT",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "miniprogram-api-typings": "^2.11.0",
-    "typescript": "^3.9.6"
+    "miniprogram-api-typings": "^3.0.1",
+    "typescript": "^3.9.7"
   }
 }
