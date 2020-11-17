@@ -1,6 +1,6 @@
 {
   "name": "coa-wxa",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "license": "MIT",
   "scripts": {
     "dev": "tsc -w",

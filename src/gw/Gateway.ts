@@ -12,6 +12,7 @@ export namespace Gateway {
 
 // 基础工具
 export class Gateway {
+
   protected host: string
 
   constructor (host: string) {
@@ -66,46 +67,34 @@ export class Gateway {
       handleStorage(data.storage)
 
     // 处理非正常响应状态
-    if (data.error) {
+    if (data.error)
       this.handleError(data.error, option)
-    }
+
     // 返回完整数据
     return data as Gateway.Result<T>
   }
 }
 
-function handleStorage (storageData: any) {
-  if (storageData.local) {
+function handleStorage ({ local = {} as any, session = {} as any }) {
 
-    for (let item in storageData.local) {
-      const action = storageData.local[item].action
-      const data = storageData.local[item].data
-      const ms = storageData.local[item].ms
+  local && Object.keys(local).forEach(item => {
+    const { action, data = {}, ms = 0 } = local[item] || {}
+    if (action === 'set')
+      storage.local.set(item, data, ms < 1 ? time.forever : ms)
+    else if (action === 'remove')
+      storage.local.remove(item)
+    else if (action === 'clear')
+      storage.local.clear()
+  })
 
-      if (action === 'set') {
-        storage.local.set(item, data, ms < 1 ? time.forever : ms)
-      } else if (action === 'remove') {
-        storage.local.remove(item)
-      } else if (action === 'clear')
-        storage.local.clear()
-    }
-  }
-
-  if (storageData.session) {
-
-    for (let item in storageData.session) {
-      const action = storageData.session[item].action
-      const data = storageData.session[item].data
-      const ms = storageData.session[item].ms
-
-      if (action === 'set') {
-        storage.memory.set(item, data, ms < 1 ? time.forever : ms)
-      } else if (action === 'remove') {
-        storage.memory.remove(item)
-      } else if (action === 'clear')
-        storage.memory.clear()
-    }
-
-  }
+  session && Object.keys(session).forEach(item => {
+    const { action, data = {}, ms = 0 } = session[item] || {}
+    if (action === 'set')
+      storage.memory.set(item, data, ms < 1 ? time.forever : ms)
+    else if (action === 'remove')
+      storage.memory.remove(item)
+    else if (action === 'clear')
+      storage.memory.clear()
+  })
 
 }
