@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-miniprogram-api-typings@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/miniprogram-api-typings/-/miniprogram-api-typings-3.0.1.tgz#457ef8792bc5dfae31e69f48bf84925df6560c2c"
-  integrity sha512-NjAZWuXPEGukiIMVMGGgo2TYgU6ybsloLQEeG838SI2mN+QMpoO+jCtp4G1T3Xi61k24GkcF3HKXnCSbzfyX0A==
+miniprogram-api-typings@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.npm.taobao.org/miniprogram-api-typings/download/miniprogram-api-typings-3.2.0.tgz#5ba1225393167e242039e4131c343b5a688aea80"
+  integrity sha1-W6EiU5MWfiQgOeQTHDQ7WmiK6oA=
 
-typescript@^3.9.7:
-  version "3.9.7"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
-  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
+typescript@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.npm.taobao.org/typescript/download/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
+  integrity sha1-rp3d/RBp8ctb6z7zshcN18EzI4k=

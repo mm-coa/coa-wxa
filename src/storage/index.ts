@@ -41,6 +41,18 @@ export default new class {
       wx.clearStorageSync()
     }
 
+    async warp<T> (id: string, worker: () => Promise<T>, ms?: number) {
+
+      let result = this.get(id)
+
+      if (result === undefined) {
+        result = await worker()
+        this.set(id, result, ms)
+      }
+      return result
+
+    }
+
   }
 
   memory = new class {
@@ -75,6 +87,18 @@ export default new class {
 
     show () {
       console.log('$SESSION', $MEMORY)
+    }
+
+    async warp<T> (id: string, worker: () => Promise<T>, ms?: number) {
+
+      let result = this.get(id)
+
+      if (result === undefined) {
+        result = await worker()
+        this.set(id, result, ms)
+      }
+      return result
+
     }
   }
 
