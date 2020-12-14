@@ -316,6 +316,18 @@ export default new class {
     return await async(w.saveImageToPhotosAlbum, args)
   }
 
+  async saveFile (args: WechatMiniprogram.WxSaveFileOption) {
+    return await async(w.saveFile, args)
+  }
+
+  async getSavedFileInfo (args: WechatMiniprogram.GetSavedFileInfoOption) {
+    return await async(w.getSavedFileInfo, args)
+  }
+
+  async getFileInfo (args: WechatMiniprogram.WxGetFileInfoOption) {
+    return await async(w.getFileInfo, args)
+  }
+
   self () {
     return w
   }
