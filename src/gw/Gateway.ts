@@ -23,7 +23,7 @@ export class Gateway {
 
     let result = { error: { retry: true } } as Gateway.Result<T>, retryTimes = 0
 
-    while (result.error?.retry && retryTimes < 3) {
+    while (result.error?.retry && retryTimes < 2) {
       retryTimes++
       result = await this.handleRequest<T>(method, url, param, option, header)
     }
