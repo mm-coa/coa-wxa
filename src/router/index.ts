@@ -1,6 +1,6 @@
 import config from '../config'
-import { Dic } from '../typing'
 import { iwx } from '../index'
+import { Dic } from '../typing'
 
 export default new (class {
   go(path: string, isRedirect = false) {
@@ -15,7 +15,7 @@ export default new (class {
       const realPath = path.substr(colonIndex + 1)
 
       // 本小程序页面
-      if (appId === config.selfAppId) return this.goInner(realPath, isRedirect)
+      if (appId === config.selfAppId) return this._goInner(realPath, isRedirect)
 
       const accountInfo = iwx.getAccountInfoSync() || ({} as any)
       const miniProgram = accountInfo.miniProgram || {}
@@ -26,10 +26,10 @@ export default new (class {
     }
 
     //以'/'或者'./'开头则为内部链接
-    if (path.startsWith('/') || path.startsWith('./')) return this.goInner(path, isRedirect)
+    if (path.startsWith('/') || path.startsWith('./')) return this._goInner(path, isRedirect)
 
     //以http://或者https:// 则为外部h5链接
-    if (path.startsWith('http://') || path.startsWith('https://')) return this.goInner(`/web/pages/link?link=${encodeURIComponent(path)}`, isRedirect)
+    if (path.startsWith('http://') || path.startsWith('https://')) return this._goInner(`/web/pages/link?link=${encodeURIComponent(path)}`, isRedirect)
 
     // 不是以上情况则警告
     console.warn('please provide correct path')
@@ -94,7 +94,7 @@ export default new (class {
     return '/' + (route + querySting).replace(/\?$/g, '').replace(/&$/g, '')
   }
 
-  private goInner(path: string, isRedirect = false) {
+  _goInner(path: string, isRedirect = false) {
     //重定向 关闭当前页面
     if (isRedirect)
       return wx.redirectTo({ url: path, fail: (e) => wx.switchTab({ url: path, fail: (e) => console.warn('please provide correct inner path') }) })

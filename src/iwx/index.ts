@@ -21,7 +21,7 @@ const async = <T = any>(
   args?: any,
   self?: WechatMiniprogram.Component.TrivialInstance | WechatMiniprogram.Page.TrivialInstance
 ) =>
-  new Promise((resolve) =>
+  new Promise<T | undefined>((resolve) =>
     func(
       {
         ...args,
@@ -30,7 +30,7 @@ const async = <T = any>(
       },
       self
     )
-  ) as Promise<T>
+  )
 
 const async_void = (func: (...args: any[]) => any, args?: any) =>
   new Promise((resolve) =>
@@ -268,7 +268,7 @@ export default new (class {
   }
 
   async checkLoginCode(arg?: WechatMiniprogram.LoginOption) {
-    const res = await this.login(arg)
+    const res = (await this.login(arg)) || { code: '' }
     return res.code || error('微信登陆失败，无法获取code')
   }
 
