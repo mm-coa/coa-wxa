@@ -17,6 +17,7 @@
     "dev": "tsc -w",
     "build": "rm -rf dist* && tsc && cp package.json *.md dist",
     "sync": "curl -X PUT 'https://npm.taobao.org/sync/coa-wxa?sync_upstream=true'",
+    "lint": "echo lint",
     "prettier": "prettier -w ."
   },
   "dependencies": {},
