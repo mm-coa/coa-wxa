@@ -3,4 +3,4 @@ import * as relativeTime from 'dayjs/plugin/relativeTime'
 
 dayjs.extend(relativeTime)
 
-export { dayjs }
+export { dayjs, relativeTime }
