@@ -1,5 +1,6 @@
 export { default as component } from './component'
 export { default as coreConfig } from './config'
+export { dayjs } from './dayjs'
 export { default as die } from './die'
 export { default as echo } from './echo'
 export { Gateway } from './gw/Gateway'

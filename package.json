@@ -20,7 +20,9 @@
     "lint": "echo lint",
     "prettier": "prettier -w ."
   },
-  "dependencies": {},
+  "dependencies": {
+    "dayjs": "^1.10.6"
+  },
   "devDependencies": {
     "miniprogram-api-typings": "^3.4.2",
     "prettier": "^2.3.2",
