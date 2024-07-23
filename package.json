@@ -1,22 +1,16 @@
 {
-  "name": "coa-wxa",
-  "version": "0.0.0",
+  "name": "mm-coa-wxa",
+  "version": "0.0.1",
   "keywords": [
     "coajs",
     "coa",
     "wxa"
   ],
   "license": "MIT",
-  "author": "Aex",
-  "homepage": "https://github.com/coajs",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/coajs/coa-wxa.git"
-  },
   "scripts": {
     "dev": "tsc -w",
     "build": "rm -rf dist* && tsc && cp package.json *.md dist",
-    "sync": "curl -X PUT 'https://npm.taobao.org/sync/coa-wxa?sync_upstream=true'",
+    "sync": "curl -X PUT 'https://registry.npmmirror.com/mm-coa-wxa/sync?publish=false&nodeps=false'",
     "lint": "echo lint",
     "prettier": "prettier -w ."
   },

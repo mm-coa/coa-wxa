@@ -9,8 +9,6 @@ jobs:
   publish:
     name: Publish
 
-    if: github.repository_owner == 'coajs'
-
     runs-on: ubuntu-latest
 
     steps:
@@ -36,7 +34,7 @@ jobs:
 
       - name: Publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.AEX_NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.BEN_NPM_TOKEN }}
         run: |
           yarn publish dist
 
